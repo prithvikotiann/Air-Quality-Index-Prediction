@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ url_for('static', filename='icon1.ico') }}" type="image/x-icon">
+  <!-- poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+  <title>AQI</title>
+  <style media="screen">
+    body {
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+    }
+
+    .category {
+      font-family: Arial, sans-serif;
+      color: #ffff;
+      margin: 0;
+
+      background-color: {{bg_color}};
+    }
+
+    .cat {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body style="background-image: url('static/air7.jpg');">
+
+  {% include 'navbar.html' %}
+  <br><br>
+  <h1>
+    <br>
+    <center class="hi">
+      Air Quality Index Prediction
+    </center>
+  </h1>
+  <center>
+    <h1 class="category">{{m}}</h1>
+    <h2 class="category cat"> {{p}} </h2>
+  </center>
+
+  <div class="inputs">
+    <form method="post">
+      <div class="slidecontainer">
+        <label for="co" class="coLabel"> CO Value </label>
+        <input type="range" min="0" max="70" name="co" value="35" class="slider" id="co">
+        <p class="p">Value: <span id="coinput"></span></p>
+
+        <label for="ozone" class="ozoneLabel"> Ozone Value </label>
+        <input type="range" min="0" max="222" name="ozone" value="111" class="slider" id="ozone">
+        <p class="p">Value: <span id="ozoneinput"></span></p>
+
+        <label for="no2" class="noLabel"> NO2 Value </label>
+        <input type="range" min="0" max="94" name="no2" value="47" class="slider" id="no2">
+        <p class="p">Value: <span id="noinput"></span></p>
+
+        <label for="pm" class="pmLabel"> PM 2.5 Value </label>
+        <input type="range" min="0" max="500" name="pm" value="250" class="slider" id="pm">
+        <p class="p">Value: <span id="pminput"></span></p>
+
+        <center> <button type="submit" class="btn btn-primary">Submit </button></center>
+        <br>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script src="{{url_for('static',filename='index.js')}}" charset="utf-8"></script>
+</body>
+
+</html>
